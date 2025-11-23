@@ -1,0 +1,33 @@
+# Netlify Build Configuration
+[build]
+  # Build command
+  command = "npm run build"
+  
+  # Directory to deploy (Vite builds to 'dist' by default)
+  publish = "dist"
+
+# Redirect rules for SPA (Single Page Application)
+# This ensures all routes are handled by your React app
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Environment variables (if needed)
+# [build.environment]
+#   NODE_VERSION = "18"
+
+# Optional: Headers for better security and performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Cache static assets
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
