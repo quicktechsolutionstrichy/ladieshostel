@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Primary colors - Magenta/Pink theme */
+    --primary: 326 68% 32%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 333 85% 55%;
+    --primary-dark: 324 71% 29%;
+    
+    /* Secondary colors */
+    --secondary: 221 83% 53%;
+    --secondary-foreground: 0 0% 100%;
+    
+    /* Accent colors */
+    --accent: 210 14% 53%;
+    --accent-foreground: 0 0% 100%;
+    
+    /* Base colors */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 13%;
+    
+    /* Muted colors */
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    
+    /* Border and ring */
+    --border: 0 0% 90%;
+    --ring: 326 68% 32%;
+    
+    /* Radius */
+    --radius: 0.5rem;
+  }
+}
+
+/* Base styles */
+body {
+  @apply bg-white text-foreground;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", sans-serif;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  @apply transition-colors duration-200;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  @apply outline-none ring-2 ring-primary ring-offset-2;
+}
+
+/* Smooth scrolling for better UX */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Image optimization */
+img {
+  @apply max-w-full h-auto;
+}
+
+/* Selection styles */
+::selection {
+  @apply bg-primary/20 text-foreground;
+}
